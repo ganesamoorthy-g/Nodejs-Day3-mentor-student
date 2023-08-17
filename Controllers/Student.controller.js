@@ -19,7 +19,7 @@ studentRouter.get('/', async (req,res) => {
     
 })
 
-studentRouter.post('/',async (req,res) => {
+studentRouter.post('/create',async (req,res) => {
     const addStudent = new Student({
         "name" : req.body.name,
         "batch" : req.body.batch,
