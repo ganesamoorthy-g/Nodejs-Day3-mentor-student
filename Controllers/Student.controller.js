@@ -5,19 +5,30 @@ const Student = require('../Models/Student.model');
 
 const studentRouter = express.Router();
 
+
 studentRouter.get('/', async (req,res) => {
     try{
-        const students = await Student.find({}).populate('Mentor').exec((err,result) => {
-            if(!err){
-                res.json(result)
-            }
-        });
-        //res.send(students);
+        const students = await Student.find();
+        res.send(students);
     }catch(err){
         res.status(400).send(err);
     }
     
 })
+
+// studentRouter.get('/', async (req,res) => {
+//     try{
+//         const student = await Student.find({}).populate('Mentor').exec((err,result) => {
+//             if(!err){
+//                 res.json(result)
+//             }
+//         });
+//         res.send(student);
+//     }catch(err){
+//         res.status(400).send(err);
+//     }
+    
+// })
 
 studentRouter.post('/create',async (req,res) => {
     const addStudent = new Student({
